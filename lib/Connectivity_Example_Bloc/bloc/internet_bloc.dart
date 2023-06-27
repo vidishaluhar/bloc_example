@@ -1,11 +1,12 @@
 import 'dart:async';
 
-import 'package:bloc_example/Connectivity%20Example/bloc/internet_event.dart';
-import 'package:bloc_example/Connectivity%20Example/bloc/internet_state.dart';
+import 'package:bloc_example/Connectivity_Example_Bloc/bloc/internet_state.dart';
 import 'package:connectivity_plus/connectivity_plus.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class InternetBloc extends Bloc<InternetEvent, InternetState> {
+import 'internet_event.dart';
+
+class InternetBloc extends Bloc<InternetEvent, InternetStateBloc> {
 
   Connectivity connectivity = Connectivity();
   StreamSubscription? connectivitySubscription;
@@ -17,6 +18,7 @@ class InternetBloc extends Bloc<InternetEvent, InternetState> {
     on<InternetGainedEvent>(
       (event, emit) => emit(InternetGainedState()),
     );
+
     connectivitySubscription =
         connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
       if (result == ConnectivityResult.mobile ||
