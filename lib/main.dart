@@ -3,6 +3,7 @@ import 'package:bloc_example/Connectivity_Example_Bloc/connectivity_example_bloc
 import 'package:bloc_example/Connectivity_Example_Cubit/connectivity_example_cubit.dart';
 import 'package:bloc_example/Connectivity_Example_Cubit/cubit/internet_cubit.dart';
 import 'package:bloc_example/Form_Validation_Bloc/form_validation_example.dart';
+import 'package:bloc_example/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -16,25 +17,14 @@ class MyApp extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return MultiBlocProvider(
-      providers: [
-        BlocProvider(create: (_) { return InternetBloc(); },),
-
-        BlocProvider(create: (_) { return InternetCubit(); },)
-      ],
-      child: MaterialApp(
-        title: 'Flutter Demo',
-        theme: ThemeData(
-          colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
-          useMaterial3: true,
-        ),
-        home: MyHomePage(),
-        routes: {
-          '/ConnectivityExampleBloc': (context) => ConnectivityExampleBloc(),
-          '/ConnectivityExampleCubit': (context) => ConnectivityExampleCubit(),
-          '/FormValidationExample': (context) => FormValidationExample(),
-        },
+    return MaterialApp(
+      title: 'Flutter Demo',
+      theme: ThemeData(
+        colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
+        useMaterial3: true,
       ),
+      home: MyHomePage(),
+      onGenerateRoute: Routes.onGenerateRoutes
     );
   }
 }
