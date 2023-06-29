@@ -13,7 +13,7 @@ class SignInPhoneNumber extends StatelessWidget {
     return SafeArea(
       child: Scaffold(
         appBar: AppBar(
-          title: Text("Sign in with Phone Number"),
+          title: const Text("Sign in with Phone Number"),
           foregroundColor: Colors.white,
           backgroundColor: Colors.blue.shade300,
           systemOverlayStyle: SystemUiOverlayStyle(
@@ -31,7 +31,7 @@ class SignInPhoneNumber extends StatelessWidget {
                   controller: phoneNumController,
                   keyboardType: TextInputType.phone,
                   textInputAction: TextInputAction.done,
-                  decoration: InputDecoration(
+                  decoration: const InputDecoration(
                       border: OutlineInputBorder(),
                       icon: Icon(Icons.phone),
                       hintText: "Enter Phone Number"),
@@ -47,8 +47,8 @@ class SignInPhoneNumber extends StatelessWidget {
                           builder: (context) => VerifyNumber(),
                         ));
                   },
-                  child: Text("Sign in"),
                   color: Colors.blue.shade300,
+                  child: const Text("Sign in"),
                 ),
               )
             ],

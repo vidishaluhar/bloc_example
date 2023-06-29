@@ -16,7 +16,7 @@ class Routes {
               create: (BuildContext context) {
                 return InternetBloc();
               },
-              child: ConnectivityExampleBloc());
+              child: const ConnectivityExampleBloc());
         });
       case '/ConnectivityExampleCubit':
         return MaterialPageRoute(builder: (BuildContext context) {
@@ -24,15 +24,15 @@ class Routes {
               create: (BuildContext context) {
                 return InternetCubit();
               },
-              child: ConnectivityExampleCubit());
+              child: const ConnectivityExampleCubit());
         });
       case '/FormValidationExample':
         return MaterialPageRoute(builder: (BuildContext context) {
-          return FormValidationExample();
+          return const FormValidationExample();
         });
       case '/Home':
         return MaterialPageRoute(builder: (BuildContext context) {
-          return Home();
+          return const Home();
         });
     }
   }

@@ -12,7 +12,7 @@ class VerifyNumber extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: Text("Verify Your Phone Number"),
+        title: const Text("Verify Your Phone Number"),
         foregroundColor: Colors.white,
         backgroundColor: Colors.blue.shade300,
         systemOverlayStyle: SystemUiOverlayStyle(
@@ -31,7 +31,7 @@ class VerifyNumber extends StatelessWidget {
                 controller: otpController,
                 keyboardType: TextInputType.phone,
                 textInputAction: TextInputAction.done,
-                decoration: InputDecoration(
+                decoration: const InputDecoration(
                     border: OutlineInputBorder(), hintText: "6-Digit OTP"),
               ),
             ),
@@ -42,11 +42,11 @@ class VerifyNumber extends StatelessWidget {
                   Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => Home(),
+                        builder: (context) => const Home(),
                       ));
                 },
-                child: Text("Verify"),
                 color: Colors.blue.shade300,
+                child: const Text("Verify"),
               ),
             )
           ],

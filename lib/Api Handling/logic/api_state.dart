@@ -1,21 +1,23 @@
 import 'package:bloc_example/Api%20Handling/data/data_model.dart';
-import 'package:bloc_example/Api%20Handling/data/fetch_data.dart';
 
-abstract class ApiState{}
+abstract class ApiState {}
 
-class ApiInitialState extends ApiState{}
+class ApiNavigationState extends ApiState {
 
-class ApiLoadingState extends ApiState{}
-
-class ApiLoadedState extends ApiState{
-  final FetchData fetchData;
-
-  ApiLoadedState(this.fetchData);
 }
 
-class ApiErrorState extends ApiState{
-  final String error;
+class ApiInitialState extends ApiState {}
 
-  ApiErrorState(this.error);
+class ApiLoadedState extends ApiState {
+  final List<DataModel> listDataModel;
 
+  ApiLoadedState({required this.listDataModel});
+}
+
+class ApiLoadingState extends ApiState {}
+
+class ApiErrorState extends ApiState {
+  final String erroeMsg;
+
+  ApiErrorState({required this.erroeMsg});
 }

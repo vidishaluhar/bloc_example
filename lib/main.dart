@@ -1,12 +1,7 @@
-import 'package:bloc_example/Connectivity_Example_Bloc/bloc/internet_bloc.dart';
-import 'package:bloc_example/Connectivity_Example_Bloc/connectivity_example_bloc.dart';
-import 'package:bloc_example/Connectivity_Example_Cubit/connectivity_example_cubit.dart';
-import 'package:bloc_example/Connectivity_Example_Cubit/cubit/internet_cubit.dart';
-import 'package:bloc_example/Form_Validation_Bloc/form_validation_example.dart';
+
 import 'package:bloc_example/routes/routes.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:flutter_bloc/flutter_bloc.dart';
 
 void main() {
   runApp(const MyApp());
@@ -23,14 +18,14 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: MyHomePage(),
+      home: const MyHomePage(),
       onGenerateRoute: Routes.onGenerateRoutes
     );
   }
 }
 
 class MyHomePage extends StatefulWidget {
-  MyHomePage({super.key});
+  const MyHomePage({super.key});
 
   @override
   State<MyHomePage> createState() => _MyHomePageState();
@@ -42,13 +37,13 @@ class _MyHomePageState extends State<MyHomePage> {
     return Scaffold(
       appBar: AppBar(
           foregroundColor: Colors.white,
-          title: Text("Bloc Example"),
+          title: const Text("Bloc Example"),
           systemOverlayStyle: SystemUiOverlayStyle(
               systemNavigationBarIconBrightness: Brightness.light,
               statusBarColor: Colors.blue.shade300,
               systemNavigationBarColor: Colors.blue.shade300),
           backgroundColor: Colors.blue.shade300),
-      body: Center(
+      body: const Center(
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
@@ -89,11 +84,11 @@ class CustomElevatedButton extends StatelessWidget {
         onPressed: () {
           Navigator.pushNamed(context, pathName);
         },
-        child: Text(text),
         style: ElevatedButton.styleFrom(
             backgroundColor: Colors.blue.shade300,
             foregroundColor: Colors.white,
-            textStyle: TextStyle(fontSize: 20)),
+            textStyle: const TextStyle(fontSize: 20)),
+        child: Text(text),
       ),
     );
   }

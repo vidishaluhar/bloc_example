@@ -1,29 +1,28 @@
-import 'package:bloc_example/Api%20Handling/data/data_model.dart';
+import 'dart:async';
+
+import 'package:bloc_example/Api%20Handling/data/fetch_data.dart';
 import 'package:bloc_example/Api%20Handling/logic/api_event.dart';
 import 'package:bloc_example/Api%20Handling/logic/api_state.dart';
+import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-class ApiBloc extends Bloc<ApiEvent,ApiState>
-{
-  final RegExp emailRegex = RegExp(
-      r'^[\w\.-]+@[a-zA-Z0-9_-]+(\.[a-zA-Z0-9_-]+)*\.[a-zA-Z]{2,6}$');
+class ApiBloc extends Bloc<ApiEvent, ApiState> {
+  ApiBloc() : super(ApiInitialState()) {
+    on<ApiSignInButtonNavigateEvent>(apiSignInButtonNavigate);
+  }
 
-  ApiBloc() : super(ApiInitialState())
-  {
-    on<ApiRequestEvent>((event, emit) {
-      if(!emailRegex.hasMatch(event.requestEmail))
+  FutureOr<void> apiSignInButtonNavigate(
+      ApiSignInButtonNavigateEvent event, Emitter<ApiState> emit) async {
+    emit(ApiLoadingState());
+    try
         {
-          emit(ApiErrorState("Your Email Address is Invalid"));
+          final data = await FetchData.fetchDataFromApi().then((data) => data,);
+          debugPrint("$data");
+          emit(ApiLoadedState(listDataModel:data));
         }
-      else if(event.requestPassword.length < 5)
-        {
-          emit(ApiErrorState("Your Password is Invalid"));
-        }
-      else
-        {
-          emit(ApiLoadedState());
-        }
-    },);
-
+        catch(e)
+    {
+      emit(ApiErrorState(erroeMsg: 'Failed To fetch Data : $e'));
+    }
   }
 }

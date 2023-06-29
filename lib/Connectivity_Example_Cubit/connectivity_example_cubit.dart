@@ -11,7 +11,7 @@ class ConnectivityExampleCubit extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
         appBar: AppBar(
-          title: Text('Connectivity Example'),
+          title: const Text('Connectivity Example'),
           foregroundColor: Colors.white,
           backgroundColor: Colors.blue.shade300,
           automaticallyImplyLeading: true,
@@ -25,11 +25,11 @@ class ConnectivityExampleCubit extends StatelessWidget {
             debugPrint("$state");
             switch (state) {
               case InternetStateCubit.gained:
-                return Text("Connected 😉",style: TextStyle(fontSize: 20),);
+                return const Text("Connected 😉",style: TextStyle(fontSize: 20),);
               case InternetStateCubit.lost:
-                return Text("Not Connected 🧐",style: TextStyle(fontSize: 20),);
+                return const Text("Not Connected 🧐",style: TextStyle(fontSize: 20),);
               case InternetStateCubit.initial:
-                return Text("Loading ... 🥲",style: TextStyle(fontSize: 20),);
+                return const Text("Loading ... 🥲",style: TextStyle(fontSize: 20),);
             }
           },
         )));

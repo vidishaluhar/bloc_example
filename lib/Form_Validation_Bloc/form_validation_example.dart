@@ -29,11 +29,16 @@ class FormValidationExample extends StatelessWidget {
                           MaterialStatePropertyAll(Colors.blue.shade300)),
                   onPressed: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => BlocProvider(
-                                create: (context) { return SignInBloc();},
-                                child: SignInEmail())));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => BlocProvider(
+                          create: (context) {
+                            return SignInBloc();
+                          },
+                          child: SignInEmail(),
+                        ),
+                      ),
+                    );
                   },
                   child: const Text('Sign in with Email',
                       style: TextStyle(
@@ -46,7 +51,11 @@ class FormValidationExample extends StatelessWidget {
                       backgroundColor:
                           MaterialStatePropertyAll(Colors.blue.shade300)),
                   onPressed: () {
-                    Navigator.push(context,MaterialPageRoute(builder: (context) => SignInPhoneNumber(),));
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                          builder: (context) => SignInPhoneNumber(),
+                        ));
                   },
                   child: const Text('Sign in with Phone Number',
                       style: TextStyle(

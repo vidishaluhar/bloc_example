@@ -1,3 +1,6 @@
+import 'package:bloc_example/Api%20Handling/logic/api_bloc.dart';
+import 'package:bloc_example/Api%20Handling/logic/api_event.dart';
+import 'package:bloc_example/Api%20Handling/presentation/home.dart';
 import 'package:bloc_example/Form_Validation_Bloc/bloc/sign_in_bloc.dart';
 import 'package:bloc_example/Form_Validation_Bloc/bloc/sign_in_event.dart';
 import 'package:bloc_example/Form_Validation_Bloc/bloc/sign_in_state.dart';
@@ -81,9 +84,21 @@ class SignInEmail extends StatelessWidget {
                       onPressed: () {
                         if (state is SignInValidState) {
                           BlocProvider.of<SignInBloc>(context).add(
-                              SignInSubmittedEvent(emailController.text,
-                                  passwordController.text));
-                          Navigator.pushNamed(context,'/Home');
+                            SignInSubmittedEvent(
+                                emailController.text, passwordController.text),
+                          );
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                              builder: (context) => BlocProvider(
+                                create: (_) => ApiBloc()
+                                  ..add(
+                                    ApiSignInButtonNavigateEvent(),
+                                  ),
+                                child: const Home(),
+                              ),
+                            ),
+                          );
                         }
                       },
                       color: (state is SignInValidState)
